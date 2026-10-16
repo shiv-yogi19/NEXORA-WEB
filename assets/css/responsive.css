@@ -1,0 +1,29 @@
+/* NEXORA responsive — Created By Shiv Yogi */
+@media (max-width: 380px) {
+  :root { --fs-xl: 1.5rem; }
+  .media-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .kv { grid-template-columns: 1fr; }
+  .tab { font-size: 0.62rem; }
+}
+@media (max-width: 599px) {
+  .btn.hide-sm span.lbl { display: none; }
+  .dialog { padding: var(--s-4); }
+  .ctl .hide-sm { display: none; }
+  .seek.vol { display: none; }
+}
+@media (min-width: 600px) {
+  .media-grid { grid-template-columns: repeat(auto-fill, minmax(180px, 1fr)); }
+}
+@media (min-width: 1200px) {
+  .media-grid { grid-template-columns: repeat(auto-fill, minmax(210px, 1fr)); }
+  .split { display: grid; grid-template-columns: minmax(0, 1.6fr) minmax(280px, 1fr); gap: var(--s-5); align-items: start; }
+}
+@media (max-height: 480px) and (orientation: landscape) {
+  .stage video { max-height: 80vh; }
+  .tabbar { height: 56px; }
+  :root { --nav-h: 56px; }
+}
+@media (forced-colors: active) {
+  .glass, .btn, .input { border: 1px solid CanvasText; }
+}
+@media print { .tabbar, .sidebar, .toasts { display: none; } }

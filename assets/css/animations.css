@@ -1,0 +1,35 @@
+/* NEXORA motion — Created By Shiv Yogi.
+   One orchestrated moment (the intro) plus responses to user actions. */
+@keyframes shimmer { to { background-position: -200% 0; } }
+@keyframes fade { from { opacity: 0; } }
+@keyframes pop { from { opacity: 0; transform: scale(0.96) translateY(6px); } }
+@keyframes sheet-up { from { transform: translateY(40px); opacity: 0; } }
+@keyframes toast-in { from { opacity: 0; transform: translateY(-10px) scale(0.98); } }
+@keyframes page-in { from { opacity: 0; } }
+
+.page { animation: page-in var(--t-med) var(--ease); }
+
+/* intro */
+.intro { position: fixed; inset: 0; z-index: 1000; display: grid; place-items: center; background: radial-gradient(70vmax 50vmax at 50% 40%, #12204a 0%, #070b18 55%, #03050b 100%); color: #fff; overflow: hidden; transition: opacity 700ms var(--ease), transform 700ms var(--ease), filter 700ms var(--ease); cursor: pointer; }
+.intro.leave { opacity: 0; transform: scale(1.06); filter: blur(10px); pointer-events: none; }
+.intro-stage { position: relative; display: grid; place-items: center; width: 100%; height: 100%; }
+.intro-word, .intro-credit { position: absolute; text-align: center; padding: 0 16px; }
+.intro-word { display: flex; gap: 0.06em; font-size: clamp(2.6rem, 14vw, 7rem); font-weight: 750; letter-spacing: 0.12em; padding-left: 0.12em; }
+.intro-word span { display: inline-block; opacity: 0; transform: translateY(0.35em) scale(0.9); filter: blur(12px); animation: letter 900ms var(--ease) forwards; animation-delay: calc(var(--i) * 90ms + 250ms); text-shadow: 0 0 40px rgba(111, 183, 255, 0.55); }
+.intro-word::after { content: ""; position: absolute; left: 50%; top: 52%; width: 70%; height: 2px; transform: translateX(-50%) scaleX(0); background: linear-gradient(90deg, transparent, var(--ember), transparent); animation: sweep 1100ms var(--ease) 1000ms forwards; }
+.intro-word { animation: word-out 600ms var(--ease) 2000ms forwards; }
+.intro-credit { opacity: 0; transform: translateY(14px); font-size: clamp(1rem, 4.4vw, 1.6rem); letter-spacing: 0.32em; color: rgba(238, 243, 255, 0.86); animation: credit 1100ms var(--ease) 2350ms forwards; }
+.intro-credit b { color: var(--ember); font-weight: 650; }
+.intro-skip { position: absolute; right: 16px; bottom: calc(16px + var(--safe-b)); font-size: var(--fs-xs); color: rgba(255, 255, 255, 0.5); }
+@keyframes letter { to { opacity: 1; transform: none; filter: blur(0); } }
+@keyframes sweep { 0% { transform: translateX(-50%) scaleX(0); opacity: 0; } 40% { opacity: 1; } 100% { transform: translateX(-50%) scaleX(1); opacity: 0; } }
+@keyframes word-out { to { opacity: 0; transform: scale(1.08); filter: blur(8px); } }
+@keyframes credit { to { opacity: 1; transform: none; } }
+
+/* reduced motion: setting "reduced" or OS preference */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { animation-duration: 1ms !important; animation-delay: 0ms !important; transition-duration: 1ms !important; scroll-behavior: auto !important; }
+  .skeleton { animation: none; }
+}
+:root[data-motion="reduced"] *, :root[data-motion="reduced"] *::before, :root[data-motion="reduced"] *::after { animation-duration: 1ms !important; animation-delay: 0ms !important; transition-duration: 1ms !important; }
+:root[data-motion="reduced"] .skeleton { animation: none; }

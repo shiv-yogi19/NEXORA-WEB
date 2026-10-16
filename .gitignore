@@ -1,0 +1,23 @@
+# NEXORA — never commit runtime data, secrets or user media
+nexora_data/
+*.db
+*.db-wal
+*.db-shm
+*.restore
+config.json
+SETUP_CODE.txt
+.env
+*.pem
+*.key
+backups/
+tmp/
+media/
+uploads/
+__pycache__/
+*.pyc
+.venv/
+venv/
+.DS_Store
+Thumbs.db
+*.zip
+node_modules/
